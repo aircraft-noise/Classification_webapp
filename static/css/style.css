@@ -1,0 +1,20 @@
+html { height: 100% }
+body { height: 100%; margin: 0; padding: 0 }
+
+#map{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    height: 100%;
+    width: 100%;
+}
+
+.mapdiv {
+    height: 80%;
+    width: 80%;
+    margin-left: 10% !important;
+}
