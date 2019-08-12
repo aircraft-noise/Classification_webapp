@@ -1,155 +1,127 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=yes" />
-    <meta charset="utf-8">
-    <!-- CSS & JS -->
-    <link rel="stylesheet" href="../static/css/sidebar.css">
-    <link rel="stylesheet" href="../static/css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <title>MONA</title>
-</head>
-<body>
-<nav class="navbar">
-    <a class="navbar-brand" href="#">
-        <img src="/static/img/MONA-V0.png" style="width: 27%" alt="">
-
-    </a>
-
-    <span class="navbar-brand mb-0 h2">Virtual Observer User Interface</span>
-</nav>
-<div class="container-fluid">
-    <!--<div id="info" style="padding-left:2ch; padding-right: 2ch">
-        <div>
-
-        </div>
-        </div>-->
-
-
-
-
-    <div class="row mapdiv" >
-        <div class="col" style="padding:20px; width: 100%">
-            <div>
-                <table style="width:40%" id="waypntstable">
-                </table>
+   <head>
+      <meta name="viewport" content="initial-scale=1.0, user-scalable=yes" />
+      <meta charset="utf-8">
+      <!-- CSS & JS -->
+      <link rel="stylesheet" href="../static/css/style.css">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <title>MONA</title>
+   </head>
+   <body>
+      <nav class="navbar">
+         <a class="navbar-brand" href="#">
+         <img src="/static/img/MONA-V0.png" style="width: 27%" alt="">
+         </a>
+         <span class="navbar-brand mb-0 h2">Virtual Observer User Interface</span>
+      </nav>
+      <div class="container-fluid">
+         <div class="row mapdiv" >
+            <div class="col" style="width: 100%">
+               <div>
+                  <table style="width:40%" id="waypntstable">
+                  </table>
+               </div>
+               <br>
+               <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               Add New Virtual Observer
+               </button>
+               <div class="dropdown-menu">
+                  <form class="px-4 py-3" id="newVOform">
+                     <div class="form-row">
+                        <div class="form-group col-md-6">
+                           <label for="newVOname">Name</label>
+                           <input type="text" class="form-control" id="newVOname" placeholder="SIDBY, BRINY etc.">
+                        </div>
+                        <div class="form-group col-md-6">
+                           <label for="newVOroute">Route</label>
+                           <input type="text" class="form-control" id="newVOroute" placeholder="SERFR, PIRAT, etc.">
+                        </div>
+                     </div>
+                     <div class="form-row">
+                        <div class="form-group col-md-6">
+                           <label for="newVOlat">Latitude</label>
+                           <input type="text" class="form-control" id="newVOlat" placeholder="Latitude">
+                        </div>
+                        <div class="form-group col-md-6">
+                           <label for="newVOlon">Longitude</label>
+                           <input type="text" class="form-control" id="newVOlon" placeholder="Longitude">
+                        </div>
+                     </div>
+                     <div class="form-row">
+                        <div class="form-group col-md-6">
+                           <label for="newVOtrackmin">Track</label>
+                           <input type="text" class="form-control" id="newVOtrackmin" placeholder="Track Min">
+                        </div>
+                        <div class="form-group col-md-6">
+                           <label for="newVOtrackmax"><br></label>
+                           <input type="text" class="form-control" id="newVOtrackmax" placeholder="Track Max">
+                        </div>
+                     </div>
+                     <div class="form-row">
+                        <div class="form-group col-md-6">
+                           <label for="newVOaltmin">Altitude</label>
+                           <input type="text" class="form-control" id="newVOaltmin" placeholder="Minimum Altitude">
+                        </div>
+                        <div class="form-group col-md-6">
+                           <label for="newVOaltmax"><br></label>
+                           <input type="text" class="form-control" id="newVOaltmax" placeholder="Maximum Altitude">
+                        </div>
+                     </div>
+                     <div class="form-row">
+                        <div class="form-group col-md-6">
+                           <label for="newVOgspeedmin">Ground Speed</label>
+                           <input type="text" class="form-control" id="newVOgspeedmin" placeholder="Min Ground Speed">
+                        </div>
+                        <div class="form-group col-md-6">
+                           <label for="newVOgspeedmax"><br></label>
+                           <input type="text" class="form-control" id="newVOgspeedmax" placeholder="Max Ground Speed">
+                        </div>
+                     </div>
+                     <div class="form-row">
+                        <div class="form-group col-md-6">
+                           <label for="newVOvratemin">Vertical Rate</label>
+                           <input type="text" class="form-control" id="newVOvratemin" placeholder="Min Vertical Rate">
+                        </div>
+                        <div class="form-group col-md-6">
+                           <label for="newVOvratemax"><br></label>
+                           <input type="text" class="form-control" id="newVOvratemax" placeholder="Max Vertical Rate">
+                        </div>
+                     </div>
+                     <div class="form-row">
+                        <div class="form-group col-md-6">
+                           <label for="newVOgspeedmin">Ground Distance</label>
+                           <input type="text" class="form-control" id="newVOgdistmin" placeholder="Min Ground distance">
+                        </div>
+                        <div class="form-group col-md-6">
+                           <label for="newVOgspeedmax"><br></label>
+                           <input type="text" class="form-control" id="newVOgdistmax" placeholder="Max Ground distance">
+                        </div>
+                     </div>
+                     <button onclick="addNewVO(); return false;" class="btn btn-primary">Submit</button>
+                  </form>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Learn More</a>
+               </div>
+               <button type="button" class="btn btn-info "  onclick="savetoCSV()" aria-haspopup="true" aria-expanded="false">
+               Save to CSV
+               </button>
+               <button type="button" class="btn btn-success " aria-haspopup="true" aria-expanded="false" disabled>
+               Classify
+               </button>
             </div>
-            <br>
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Add New Virtual Observer
-  </button>
-            <div class="dropdown-menu">
-  <form class="px-4 py-3" id="newVOform">
-
-
-      <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="newVOname">Name</label>
-      <input type="text" class="form-control" id="newVOname" placeholder="SIDBY, BRINY etc.">
-    </div>
-    <div class="form-group col-md-6">
-     <label for="newVOroute">Route</label>
-      <input type="text" class="form-control" id="newVOroute" placeholder="SERFR, PIRAT, etc.">
-    </div>
+            <div class="col">
+               <div id="map"></div>
+               <!-- bring in the google maps library -->
+               <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjIfGMJKoM_kjHp7L_JzQvReP14sQVHWY"></script>
+               <script type="text/javascript"></script>
+            </div>
+         </div>
       </div>
-
-      <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="newVOlat">Latitude</label>
-      <input type="text" class="form-control" id="newVOlat" placeholder="Latitude">
-    </div>
-    <div class="form-group col-md-6">
-     <label for="newVOlon">Longitude</label>
-      <input type="text" class="form-control" id="newVOlon" placeholder="Longitude">
-    </div>
-      </div>
-
-      <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="newVOtrackmin">Track</label>
-      <input type="text" class="form-control" id="newVOtrackmin" placeholder="Track Min">
-    </div>
-    <div class="form-group col-md-6">
-        <label for="newVOtrackmax"><br></label>
-     <input type="text" class="form-control" id="newVOtrackmax" placeholder="Track Max">
-    </div>
-      </div>
-
-      <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="newVOaltmin">Altitude</label>
-      <input type="text" class="form-control" id="newVOaltmin" placeholder="Minimum Altitude">
-    </div>
-    <div class="form-group col-md-6">
-        <label for="newVOaltmax"><br></label>
-     <input type="text" class="form-control" id="newVOaltmax" placeholder="Maximum Altitude">
-    </div>
-      </div>
-
-      <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="newVOgspeedmin">Ground Speed</label>
-      <input type="text" class="form-control" id="newVOgspeedmin" placeholder="Min Ground Speed">
-    </div>
-    <div class="form-group col-md-6">
-        <label for="newVOgspeedmax"><br></label>
-     <input type="text" class="form-control" id="newVOgspeedmax" placeholder="Max Ground Speed">
-    </div>
-      </div>
-
-
-      <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="newVOvratemin">Vertical Rate</label>
-      <input type="text" class="form-control" id="newVOvratemin" placeholder="Min Vertical Rate">
-    </div>
-    <div class="form-group col-md-6">
-        <label for="newVOvratemax"><br></label>
-     <input type="text" class="form-control" id="newVOvratemax" placeholder="Max Vertical Rate">
-    </div>
-      </div>
-
-
-      <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="newVOgspeedmin">Ground Distance</label>
-      <input type="text" class="form-control" id="newVOgdistmin" placeholder="Min Ground distance">
-    </div>
-    <div class="form-group col-md-6">
-        <label for="newVOgspeedmax"><br></label>
-     <input type="text" class="form-control" id="newVOgdistmax" placeholder="Max Ground distance">
-    </div>
-      </div>
-
-
-
-    <button onclick="addNewVO(); return false;" class="btn btn-primary">Submit</button>
-  </form>
-  <div class="dropdown-divider"></div>
-  <a class="dropdown-item" href="#">Learn More</a>
-</div>
-
-            <button type="button" class="btn btn-info "  onclick="savetoCSV()" aria-haspopup="true" aria-expanded="false">
-    Save to CSV
-  </button>
-
-            <button type="button" class="btn btn-success " aria-haspopup="true" aria-expanded="false" disabled>
-    Classify
-  </button>
-
-        </div>
-        <div class="col">
-            <div id="map"></div>
-            <!-- bring in the google maps library -->
-            <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&key="></script>
-            <script type="text/javascript"></script>
-        </div>
-    </div>
-</div>
-<script type="text/javascript" src = "../static/js/script.js"></script>
-<script type="text/javascript" src = "../static/js/apimap.js"></script>
-</body>
+      <script type="text/javascript" src = "../static/js/script.js"></script>
+      <script type="text/javascript" src = "../static/js/apimap.js"></script>
+   </body>
 </html>

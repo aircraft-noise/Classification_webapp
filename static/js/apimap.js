@@ -14,12 +14,12 @@ google.maps.event.addListener(map, 'click', function (event) {
 
 function displayCoordinates(pnt) {
     var lat = pnt.lat();
-    lat = lat.toFixed(4);
+    lat = lat.toFixed(6);
     var lng = pnt.lng();
-    lng = lng.toFixed(4);
-    document.getElementById("newlat").value = lat;
-    document.getElementById("newlon").value = lng;
-    getElev();
+    lng = lng.toFixed(6);
+    document.getElementById("newVOlat").value = lat;
+    document.getElementById("newVOlon").value = lng;
+    //getElev();
 }
 
 function getElev() {

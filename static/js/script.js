@@ -1,6 +1,5 @@
-//lastwaypoint is the counter to make a new VO
-let lastwaypoint = 0;
-//master_struct is the data structure which holds the original dict of VOs grouped by route
+//master_struct is the data structure which holds
+// the original dict of VOs grouped by route
 let master_struct = {};
 
 let waypointtoRoute = {};
@@ -8,14 +7,14 @@ let waypointtoIndex = {};
 
 //Getting the header list of the classification rule base keys
 let HEADER = [];
-fetch('/header')
+fetch("/header")
     .then(data=>{return data.json()})
     .then(res=>{
         HEADER = res;
     });
 
 //GET request to get VO dictionary
-const url='/waypoints';
+const url="waypoints";
 fetch(url)
     .then(data=>{return data.json()})
     .then(res=>{
@@ -101,8 +100,6 @@ $(document.body).on("change",".tableinput",function(){
     changedData()
 });
 
-
-//$(document).on('change', 'select', updateFront());
 
 function clearMap(){
     for (index in listOfMarkers){
@@ -218,7 +215,7 @@ function updateFront(column1 = $("#drop1").val(), column2 = $("#drop2").val()){
         addRouteToMap(polylinelist, route);
         polylinelist = [];
 
-        lastwaypoint = count;
+
 
     }
 }
@@ -280,8 +277,6 @@ function savetoCSV(){
     }
     console.log(csvfile);
     exportToCsv("waypoints.csv",csvfile);
-    //console.log(csvfile);
-    //var values = Object.keys(dictionary).map(function(key){
 
 }
 
