@@ -13,181 +13,143 @@
     <title>MONA</title>
 </head>
 <body>
-<div class="container-fluid">
+<nav class="navbar">
+    <a class="navbar-brand" href="#">
+        <img src="/static/img/MONA-V0.png" style="width: 27%" alt="">
 
+    </a>
+
+    <span class="navbar-brand mb-0 h2">Virtual Observer User Interface</span>
+</nav>
+<div class="container-fluid">
     <!--<div id="info" style="padding-left:2ch; padding-right: 2ch">
         <div>
 
-
         </div>
-    </div>-->
-    <h1>MONA </h1>
-            <h2>Virtual Observer User Interface</h2>
+        </div>-->
+
+
+
 
     <div class="row mapdiv" >
         <div class="col" style="padding:20px; width: 100%">
-
             <div>
                 <table style="width:40%" id="waypntstable">
-
                 </table>
             </div>
             <br>
-            <div >
-        <p>Add new Virtual Observer:</p>
-            Name: <input id="newname" type="text" size="6" name="name"> <br/>
-            Lat: <input id="newlat" type="text" size="6" name="lat"> <br/>
-            Lon: <input id="newlon" type="text" size="6" name="lon"> <br/>
-            Elevation: <input id="alt" type="text" size="4" name="alt"> m <br/>
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Add New Virtual Observer
+  </button>
+            <div class="dropdown-menu">
+  <form class="px-4 py-3">
 
-            <button onclick="addNewWaypoint()">Add</button>
+
+      <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="newVOname">Name</label>
+      <input type="text" class="form-control" id="newVOname" placeholder="SIDBY, BRINY etc.">
     </div>
+    <div class="form-group col-md-6">
+     <label for="newVOroute">Route</label>
+      <input type="text" class="form-control" id="newVOroute" placeholder="SERFR, PIRAT, etc.">
+    </div>
+      </div>
+
+      <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="newVOlat">Latitude</label>
+      <input type="text" class="form-control" id="newVOlat" placeholder="Latitude">
+    </div>
+    <div class="form-group col-md-6">
+     <label for="newVOlon">Longitude</label>
+      <input type="text" class="form-control" id="newVOlon" placeholder="Longitude">
+    </div>
+      </div>
+
+      <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="newVOtrackmin">Track</label>
+      <input type="text" class="form-control" id="newVOtrackmin" placeholder="Track Min">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="newVOtrackmax"><br></label>
+     <input type="text" class="form-control" id="newVOtrackmax" placeholder="Track Max">
+    </div>
+      </div>
+
+      <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="newVOaltmin">Altitude</label>
+      <input type="text" class="form-control" id="newVOaltmin" placeholder="Minimum Altitude">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="newVOaltmax"><br></label>
+     <input type="text" class="form-control" id="newVOaltmax" placeholder="Maximum Altitude">
+    </div>
+      </div>
+
+      <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="newVOgspeedmin">Ground Speed</label>
+      <input type="text" class="form-control" id="newVOgspeedmin" placeholder="Min Ground Speed">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="newVOgspeedmax"><br></label>
+     <input type="text" class="form-control" id="newVOgspeedmax" placeholder="Max Ground Speed">
+    </div>
+      </div>
 
 
+      <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="newVOvratemin">Vertical Rate</label>
+      <input type="text" class="form-control" id="newVOvratemin" placeholder="Min Vertical Rate">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="newVOvratemax"><br></label>
+     <input type="text" class="form-control" id="newVOvratemax" placeholder="Max Vertical Rate">
+    </div>
+      </div>
+
+
+      <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="newVOgspeedmin">Ground Distance</label>
+      <input type="text" class="form-control" id="newVOgdistmin" placeholder="Min Ground distance">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="newVOgspeedmax"><br></label>
+     <input type="text" class="form-control" id="newVOgdistmax" placeholder="Max Ground distance">
+    </div>
+      </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item" href="#">Learn More</a>
+</div>
+
+            <button type="button" class="btn btn-info "  aria-haspopup="true" aria-expanded="false" disabled>
+    Save to CSV
+  </button>
+
+            <button type="button" class="btn btn-success " aria-haspopup="true" aria-expanded="false" disabled>
+    Classify
+  </button>
 
         </div>
         <div class="col">
-        <div id="map"></div>
-        <!-- bring in the google maps library -->
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&key="></script>
-        <script type="text/javascript">
-        </script>
-
-
+            <div id="map"></div>
+            <!-- bring in the google maps library -->
+            <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&key="></script>
+            <script type="text/javascript"></script>
         </div>
     </div>
-
-
-
-
 </div>
-<script>
-    let lastwaypoint = 0;
-
-    const Http = new XMLHttpRequest();
-    const url='/example';
-    Http.open("GET", url);
-    Http.send();
-    Http.onreadystatechange = (e) => {
-        console.log(Http.responseText)
-        initMap(JSON.parse(Http.responseText));
-
-    };
-
-
-    let listOfMarkers = [];
-    function initMap(listway) {
-        clearMap();
-        listOfMarkers = []
-
-
-        document.getElementById("waypntstable").innerHTML = null;
-        var heading = document.createElement("tr");
-        heading.innerHTML = "<th>Name:</th>\n" +
-            "                    <th>Lat:</th>\n" +
-            "                    <th>Long:</th>"
-        document.getElementById("waypntstable").appendChild(heading);
-
-        for (var waypoint in listway) {
-            (function () {
-                // Add the circle for this city to the map.
-                let name = listway[waypoint][0];
-                let cen = {};
-                cen['lat'] = parseFloat(listway[waypoint][1]);
-                cen['lng'] = parseFloat(listway[waypoint][2]);
-                let colid = "Waypoint-"+waypoint;
-                addWaypointToCol(name,colid,cen['lat'],cen['lng']);
-                addWaypointToMap(name,cen);
-
-
-
-            }());
-            lastwaypoint = waypoint;
-
-        }
-    }
-
-    function clearMap(){
-        for (index in listOfMarkers){
-            listOfMarkers[index].setMap(null);
-        }
-    }
-
-    function addWaypointToMap(name,cen){
-        var cityCircle = new google.maps.Marker({
-                    position: cen,
-                    map: map,
-                    title: name,
-                    draggable: true,
-                    label: {
-                        color: 'black',
-                        fontWeight: 'bold',
-                        text: name,
-                    },
-                    icon: {
-                        labelOrigin: new google.maps.Point(11, 50),
-                        size: new google.maps.Size(22, 40),
-                        origin: new google.maps.Point(0, 0),
-                        anchor: new google.maps.Point(11, 40),
-                    },
-                });
-
-                listOfMarkers.push(cityCircle);
-
-                google.maps.event.addListener(cityCircle, "drag", function(){
-                    console.log(cityCircle.getTitle());
-                    let latid = cityCircle.getTitle() + "-lat";
-                    document.getElementById(latid).value = cityCircle.getPosition().lat().toFixed(6);
-                    let longid = cityCircle.getTitle() + "-long";
-                    document.getElementById(longid).value = cityCircle.getPosition().lng().toFixed(6);
-                });
-
-                var infowindow = new google.maps.InfoWindow({
-                    content: cityCircle.getTitle()
-                });
-                cityCircle.addListener('click', function () {
-                    infowindow.open(map, cityCircle);
-                });
-    }
-
-    function addNewWaypoint(){
-        let n = document.getElementById("newname").value;
-        let lt = document.getElementById("newlat").value;
-        let ln = document.getElementById("newlon").value;
-        let npos = {};
-                npos['lat'] = parseFloat(lt);
-                npos['lng'] = parseFloat(ln);
-        lastwaypoint++;
-        addWaypointToCol(n,"Waypoint-"+lastwaypoint, lt, ln);
-        addWaypointToMap(n,npos)
-    }
-    function addWaypointToCol(wname, wcolid, wlat, wlng){
-        var col = document.createElement("tr");
-                col.id = wcolid;
-                console.log(wcolid);
-
-                col.innerHTML = "<th><input id="+wname+"-name value = "+wname+"></input></th>\n" +
-                    "                    <th><input id="+wname+"-lat value="+wlat+"></input></th>\n" +
-                    "                    <th><input id="+wname+"-long value="+wlng+"></input></th>" +
-                    "<button type=\"button\" class=\"close\" aria-label=\"Close\" id=\"rmvbutton\" onclick=\"removeWaypoint(\'"+wcolid+"\')\"   " +
-                    "  <span aria-hidden=\"true\">&times;</span>\n" +
-                    "</button>";
-                //document.getElementById("rmvbutton").addEventListener("click", removeCol(colid));
-                document.getElementById("waypntstable").appendChild(col);
-    }
-    function removeWaypoint(id){
-        console.log(id)
-        var elem = document.getElementById(id);
-        console.log(id.substring(9,));
-        let ind = parseInt(id.substring(9,));
-        listOfMarkers[ind].setMap(null);
-        elem.parentNode.removeChild(elem);
-        return false;
-    }
-    // Construct the circle for each value in citymap.
-    // Note: We scale the area of the circle based on the population.
-
-</script>
+<script type="text/javascript" src = "../static/js/script.js"></script>
 <script type="text/javascript" src = "../static/js/apimap.js"></script>
 </body>
 </html>

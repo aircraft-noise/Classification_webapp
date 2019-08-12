@@ -18,3 +18,7 @@ body { height: 100%; margin: 0; padding: 0 }
     width: 80%;
     margin-left: 10% !important;
 }
+
+.navbar {
+    background: #929aab !important;
+}
